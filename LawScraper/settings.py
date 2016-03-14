@@ -13,7 +13,10 @@ BOT_NAME = 'LawScraper'
 
 SPIDER_MODULES = ['LawScraper.spiders']
 NEWSPIDER_MODULE = 'LawScraper.spiders'
+USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
 
+LOG_LEVEL = 'INFO'
+LOG_FILE = "crawler.log"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'LawScraper (+http://www.yourdomain.com)'
@@ -61,9 +64,10 @@ NEWSPIDER_MODULE = 'LawScraper.spiders'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'LawScraper.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'LawScraper.pipelines.StatePDFPipeline': 300,
+}
+FILES_STORE = 'Destination folder here'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
