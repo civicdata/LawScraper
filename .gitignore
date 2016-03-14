@@ -1,1 +1,4 @@
 *.pyc
+items.json
+crawler.log
+.DS_Store
