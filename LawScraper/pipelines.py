@@ -8,6 +8,7 @@
 import scrapy
 import logging
 from scrapy.pipelines.files import FilesPipeline
+from scrapy.utils.project import get_project_settings
 
 logger = logging.getLogger()
 
@@ -19,7 +20,7 @@ class StatePDFPipeline(FilesPipeline):
             return item
 
         file_info = results[0][1]
-        item['pdf_path'] = file_info['path']
+        item['pdf_path'] = get_project_settings().get('FILES_STORE') + file_info['path']
         item['pdf_md5'] = file_info['checksum']
         return item
 
