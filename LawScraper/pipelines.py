@@ -5,6 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+import time
 import scrapy
 import logging
 from scrapy.pipelines.files import FilesPipeline
@@ -22,6 +23,7 @@ class StatePDFPipeline(FilesPipeline):
         file_info = results[0][1]
         item['pdf_path'] = get_project_settings().get('FILES_STORE') + file_info['path']
         item['pdf_md5'] = file_info['checksum']
+        item['download_time'] = time.strftime("%Y-%m-%d %H:%M:%S")
         return item
 
 
